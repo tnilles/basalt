@@ -1,0 +1,19 @@
+ul {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+li paper-button[raised] {
+    width: 100%;
+}
+
+paper-button.colored {
+    color: #4285f4;
+    margin-top: 40px;
+}

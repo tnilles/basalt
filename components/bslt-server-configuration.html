@@ -10,31 +10,33 @@
 
         <div vertical layout>
             <div>
-                <paper-input label="Name" floatingLabel></paper-input>
+                <paper-input label="Name" value="{{name}}" floatingLabel></paper-input>
             </div>
             <div>
-                <paper-input label="Host" floatingLabel></paper-input>
+                <paper-input label="Host" value="{{host}}" floatingLabel></paper-input>
             </div>
             <div>
-                <paper-input label="Port" value="6379" floatingLabel></paper-input>
+                <paper-input label="Port" value="{{port}}" floatingLabel></paper-input>
             </div>
             <div>
-                <paper-button class="colored" raised>Add this server</paper-button>
+                <paper-button id="addServer" class="colored" raised>Add this server</paper-button>
             </div>
         </div>
 
     </template>
     <script>
         Polymer({
-            owner: 'Thierry',
-            color: 'yellow',
-            nameChanged: function() {
-                if (this.name) {
-                    this.name = this.name.toUpperCase();
-                }
-            },
+            port: 6379,
             ready: function() {
-                //this.$.el.textContent = this.owner + " is ready!";
+                var self = this;
+
+                self.$.addServer.addEventListener('click', function() {
+                    self.fire('add-server-configuration', {
+                        name: self.name,
+                        host: self.host,
+                        port: self.port
+                    });
+                });
             }
         });
   </script>

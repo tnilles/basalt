@@ -105,3 +105,40 @@ function resetActive() {
         active.classList.remove('active');
     });
 }
+
+
+
+// POLYMER
+
+// Elements
+var $serverList             =   document.querySelector('bslt-server-list'),
+    $serverConfiguration    =   document.querySelector('bslt-server-configuration');
+
+// Models
+var servers = [];
+
+$serverList.servers = servers;
+
+$serverList.addEventListener('open-server-configuration', function() {
+    $serverList.style.display = 'none';
+    $serverConfiguration.style.display = 'block';
+});
+
+$serverConfiguration.addEventListener('add-server-configuration', function(event) {
+    $serverList.style.display = 'block';
+    $serverConfiguration.style.display = 'none';
+    servers.push(event.detail);
+});
+
+initApp();
+
+
+function initApp() {
+    if (!servers.length) {
+        $serverList.style.display = 'none';
+        $serverConfiguration.style.display = 'block';
+    } else {
+        $serverList.style.display = 'block';
+        $serverConfiguration.style.display = 'none';
+    }
+}
