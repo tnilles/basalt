@@ -76,7 +76,7 @@ var databases = document.querySelectorAll('#databases li'),
     keys = document.getElementById('keys'),
     flushdb = document.getElementById('flushdb'),
     reload = document.getElementById('reload');
-
+/*
 reload.addEventListener('click', function() {
     doYourThings();
 });
@@ -85,6 +85,7 @@ flushdb.addEventListener('click', function() {
     client.flushdb();
     doYourThings();
 });
+*/
 
 Array.prototype.forEach.call(databases, function(database) {
     database.addEventListener('click', function(event) {

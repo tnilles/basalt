@@ -1,0 +1,28 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="bslt-list" attributes="owner color">
+    <template>
+        <span>Hello from <b>bslt-list</b>. This is my Shadow DOM.</span>
+        <textarea value="{{resp}}"></textarea>
+        <p id="el">
+            {{owner}} favorite color:  <span style="color: {{color}}">{{color}}</span>.
+        </p>
+        <h1>{{name}} is cool</h1>
+        <input id="nameInput" value="{{name}}" placeholder="Enter name..."></p>
+    </template>
+    <script>
+        Polymer({
+            owner: 'Thierry',
+            color: 'yellow',
+            nameChanged: function() {
+                if (this.name) {
+                    this.name = this.name.toUpperCase();
+                }
+            },
+            ready: function() {
+                //this.$.el.textContent = this.owner + " is ready!";
+            }
+        });
+  </script>
+</polymer-element>

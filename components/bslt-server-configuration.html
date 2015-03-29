@@ -1,0 +1,41 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<polymer-element name="bslt-server-configuration" attributes="owner color">
+    <template>
+        <link rel="stylesheet" href="../css/bslt-server-configuration.css">
+
+        <h1>Server configuration</h1>
+
+        <div vertical layout>
+            <div>
+                <paper-input label="Name" floatingLabel></paper-input>
+            </div>
+            <div>
+                <paper-input label="Host" floatingLabel></paper-input>
+            </div>
+            <div>
+                <paper-input label="Port" value="6379" floatingLabel></paper-input>
+            </div>
+            <div>
+                <paper-button class="colored" raised>Add this server</paper-button>
+            </div>
+        </div>
+
+    </template>
+    <script>
+        Polymer({
+            owner: 'Thierry',
+            color: 'yellow',
+            nameChanged: function() {
+                if (this.name) {
+                    this.name = this.name.toUpperCase();
+                }
+            },
+            ready: function() {
+                //this.$.el.textContent = this.owner + " is ready!";
+            }
+        });
+  </script>
+</polymer-element>

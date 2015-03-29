@@ -1,0 +1,8 @@
+:host {
+    text-align: center;
+}
+
+paper-button[raised].colored {
+  background: #4285f4;
+  color: #fff;
+}
