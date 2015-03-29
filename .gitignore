@@ -2,3 +2,5 @@ node_modules/*
 bower_components/*
 nwjc
 nwjs.app
+dump.rdb
+npm-debug.log
