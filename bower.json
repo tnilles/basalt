@@ -2,7 +2,8 @@
   "name": "basalt",
   "version": "0.0.1",
   "authors": [
-    "Thierry Nilles <contact@thierrynilles.com>"
+    "Thierry Nilles <contact@thierrynilles.com>",
+    "Jordan Aberrachid <jabderrachid@gmail.com>"
   ],
   "main": "index.html",
   "license": "MIT",
