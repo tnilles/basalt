@@ -112,7 +112,8 @@ function resetActive() {
 
 // Elements
 var $serverList             =   document.querySelector('bslt-server-list'),
-    $serverConfiguration    =   document.querySelector('bslt-server-configuration');
+    $serverConfiguration    =   document.querySelector('bslt-server-configuration'),
+    $pages                  =   document.querySelector('core-pages');
 
 // Models
 var servers = [];
@@ -120,25 +121,10 @@ var servers = [];
 $serverList.servers = servers;
 
 $serverList.addEventListener('open-server-configuration', function() {
-    $serverList.style.display = 'none';
-    $serverConfiguration.style.display = 'block';
+    $pages.selected = 1;
 });
 
 $serverConfiguration.addEventListener('add-server-configuration', function(event) {
-    $serverList.style.display = 'block';
-    $serverConfiguration.style.display = 'none';
+    $pages.selected = 0;
     servers.push(event.detail);
 });
-
-initApp();
-
-
-function initApp() {
-    if (!servers.length) {
-        $serverList.style.display = 'none';
-        $serverConfiguration.style.display = 'block';
-    } else {
-        $serverList.style.display = 'block';
-        $serverConfiguration.style.display = 'none';
-    }
-}
