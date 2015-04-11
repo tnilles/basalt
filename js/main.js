@@ -8,7 +8,7 @@ var win = gui.Window.get(),
 
 // check operating system for the menu
 if (process.platform === "darwin") {
-    nativeMenuBar.createMacBuiltin("Your App Name");
+    nativeMenuBar.createMacBuiltin("Basalt");
 }
 
 // actually assign menu to window
@@ -16,8 +16,10 @@ win.menu = nativeMenuBar;
 // Copy paste for OSX
 
 
-var redis = require("redis"),
-    client = redis.createClient(6379, '127.0.0.1');
+
+
+var redis       =   require('redis'),
+    client      =   redis.createClient(6379, '127.0.0.1');
 
  client.on("error", function (err) {
      console.log("Error " + err);
@@ -111,20 +113,12 @@ function resetActive() {
 // POLYMER
 
 // Elements
-var $serverList             =   document.querySelector('bslt-server-list'),
-    $serverConfiguration    =   document.querySelector('bslt-server-configuration'),
-    $pages                  =   document.querySelector('core-pages');
+var $pages = document.querySelector('core-pages'),
+    $serverList = document.querySelector('bslt-server-list');
 
 // Models
 var servers = [];
 
 $serverList.servers = servers;
 
-$serverList.addEventListener('open-server-configuration', function() {
-    $pages.selected = 1;
-});
-
-$serverConfiguration.addEventListener('add-server-configuration', function(event) {
-    $pages.selected = 0;
-    servers.push(event.detail);
-});
+fsm.initialize($pages);
