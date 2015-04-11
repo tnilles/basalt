@@ -28,5 +28,16 @@
         <script src="js/controllers/server-configuration.js"></script>
         <script src="js/states.js"></script>
         <script src="js/main.js"></script>
+
+        <script>
+            <!-- dev only: reload the app when a file changes -->
+            var path = './';
+            var fs = require('fs');
+
+            fs.watch(path, {recursive: true}, function() {
+                if (location)
+                    location.reload();
+            });
+        </script>
     </body>
 </html>
