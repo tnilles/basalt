@@ -15,8 +15,12 @@ if (process.platform === "darwin") {
 win.menu = nativeMenuBar;
 // Copy paste for OSX
 
+global.document = document;
+global.window = window;
 
 
+var Router = require('./js/service/Router.js'),
+    router = new Router({corePages: document.querySelector('core-pages')});
 
 var redis       =   require('redis'),
     client      =   redis.createClient(6379, '127.0.0.1');
@@ -107,18 +111,3 @@ function resetActive() {
         active.classList.remove('active');
     });
 }
-
-
-
-// POLYMER
-
-// Elements
-var $pages = document.querySelector('core-pages'),
-    $serverList = document.querySelector('bslt-server-list');
-
-// Models
-var servers = [];
-
-$serverList.servers = servers;
-
-fsm.initialize($pages);

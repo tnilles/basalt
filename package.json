@@ -14,5 +14,9 @@
   "license": "ISC",
   "dependencies": {
     "redis": "^0.12.1"
+  },
+  "devDependencies": {
+     "mocha": "^2.2.1",
+     "should": "^5.2.0"
   }
 }
