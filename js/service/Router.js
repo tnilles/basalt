@@ -26,18 +26,26 @@ var Router = function(options) {
 
 Router.prototype._setPagesList = function(corePages) {
     var self = this,
-        corePagesChildren = this._corePages.children;
+        corePagesChildren = this._corePages.children,
+        pageName;
 
     for (var i = 0, n = corePagesChildren.length; i < n; i++) {
+        pageName = corePagesChildren[i].tagName.toLowerCase();
+
         self._pages.push({
-            name: corePagesChildren[i].tagName,
+            name: pageName,
+            controller: self._importController(pageName),
             index: i
         });
     }
 };
 
+Router.prototype._importController = function(ctrlName) {
+    return require('../controllers/' + _.kebabCase(ctrlName));
+};
+
 Router.prototype.to = function(pageName) {
-    this._corePages.selected = _.result(_.find(this._pages, 'name', pageName.toUpperCase()), 'index');
+    this._corePages.selected = _.result(_.find(this._pages, 'name', pageName), 'index');
 };
 
 module.exports = Router;
