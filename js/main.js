@@ -19,9 +19,17 @@ global.document = document;
 global.window = window;
 
 
-var Router = require('./js/service/Router.js'),
-    router = new Router({corePages: document.querySelector('core-pages')});
+var router = require('./js/service/router.js'),
+    rootCtrl = require('./js/controllers/root');
 
+router.init({
+    corePages: document.querySelector('core-pages')
+});
+
+// Start the app
+rootCtrl();
+
+/*
 var redis       =   require('redis'),
     client      =   redis.createClient(6379, '127.0.0.1');
 
@@ -62,7 +70,7 @@ function doYourThings() {
 
         });
     });
-    /*client.set("string key", "string val", redis.print);
+    client.set("string key", "string val", redis.print);
     client.hset("hash key", "hashtest 1", "some value", redis.print);
     client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
     client.hkeys("hash key", function (err, replies) {
@@ -71,7 +79,7 @@ function doYourThings() {
             console.log("    " + i + ": " + reply);
         });
         client.quit();
-    });*/
+    });
 }
 
 
@@ -82,7 +90,7 @@ var databases = document.querySelectorAll('#databases li'),
     keys = document.getElementById('keys'),
     flushdb = document.getElementById('flushdb'),
     reload = document.getElementById('reload');
-/*
+
 reload.addEventListener('click', function() {
     doYourThings();
 });
@@ -91,7 +99,7 @@ flushdb.addEventListener('click', function() {
     client.flushdb();
     doYourThings();
 });
-*/
+
 
 Array.prototype.forEach.call(databases, function(database) {
     database.addEventListener('click', function(event) {
@@ -111,3 +119,4 @@ function resetActive() {
         active.classList.remove('active');
     });
 }
+*/

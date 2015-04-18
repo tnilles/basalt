@@ -1,6 +1,7 @@
 'use strict';
 
-var _ = require('lodash');
+var _ = require('lodash'),
+    listener = require('./listener');
 
 /**
  * A basic router working with polymer's core-pages element
@@ -14,13 +15,15 @@ var Router = function(options) {
         return new Router(options);
     }
 
+    this._pages = [];
+};
+
+Router.prototype.init = function(options) {
     if (!options.corePages || !(_.isElement(options.corePages))) {
         throw new Error('Router constructor is missing the corePages option');
     }
 
     this._corePages = options.corePages;
-    this._pages = [];
-
     this._setPagesList(this._corePages);
 };
 
@@ -45,7 +48,13 @@ Router.prototype._importController = function(ctrlName) {
 };
 
 Router.prototype.to = function(pageName) {
-    this._corePages.selected = _.result(_.find(this._pages, 'name', pageName), 'index');
+    var page = _.find(this._pages, 'name', pageName);
+
+    listener.removeAll();
+
+    this._corePages.selected = page.index;
+
+    page.controller();
 };
 
-module.exports = Router;
+module.exports = new Router();
