@@ -9,11 +9,22 @@ li {
     margin-bottom: 10px;
 }
 
-li paper-button[raised] {
+paper-button[raised] {
     width: 100%;
 }
 
 paper-button.colored {
     color: #4285f4;
     margin-top: 40px;
+}
+
+#server-list li {
+    position: relative;
+}
+
+#delete {
+    position: absolute;
+    right: -40px;
+    top: 15px;
+    cursor: pointer;
 }

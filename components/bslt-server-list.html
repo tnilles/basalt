@@ -11,10 +11,10 @@
             No server yet.
         </template>
 
-        <ul>
+        <ul id="server-list">
             <template repeat="{{server in servers}}">
                 <li>
-                    <paper-button raised>{{server.name}}</paper-button>
+                    <bslt-server name="{{server.name}}" on-delete-server="{{deleteServer}}"></bslt-server>
                 </li>
             </template>
 
@@ -32,6 +32,9 @@
                 this.$.addServer.addEventListener('click', function() {
                     this.fire('open-server-configuration');
                 });
+            },
+            deleteServer: function(event, detail, sender) {
+                this.fire('delete-server');
             }
         });
   </script>

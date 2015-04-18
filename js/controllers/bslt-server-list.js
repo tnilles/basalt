@@ -11,11 +11,16 @@ var serverListCtrl = function() {
         router.to('bslt-server-configuration');
     };
 
+    var deleteServer = function(event) {
+        servers.remove(event.detail);
+    };
+
     var $serverList = document.querySelector('bslt-server-list');
 
     $serverList.servers = servers.fetch();
 
     listener.add($serverList, 'open-server-configuration', configureServer);
+    listener.add($serverList, 'delete-server', deleteServer);
 };
 
 module.exports = serverListCtrl;
