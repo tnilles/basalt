@@ -2,7 +2,7 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 
-<polymer-element name="bslt-server-configuration" attributes="owner color">
+<polymer-element name="bslt-server-configuration">
     <template>
         <link rel="stylesheet" href="../css/bslt-server-configuration.css">
 
@@ -36,6 +36,10 @@
                         host: self.host,
                         port: self.port
                     });
+
+                    self.name = '';
+                    self.host = '';
+                    self.port = 6379;
                 });
             }
         });
