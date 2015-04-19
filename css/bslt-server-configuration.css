@@ -6,3 +6,21 @@ paper-button[raised].colored {
   background: #4285f4;
   color: #fff;
 }
+
+a#back {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 28px;
+    height: 30px;
+    line-height: 35px;
+    background: grey;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    padding-right: 2px;
+}
+
+a#back:hover {
+    background: rgb(121, 121, 121);
+}

@@ -8,6 +8,8 @@
 
         <h1>Server configuration</h1>
 
+        <a href="#" id="back">&#9664;</a>
+
         <div vertical layout>
             <div>
                 <paper-input label="Name" value="{{name}}" floatingLabel></paper-input>
@@ -40,6 +42,10 @@
                     self.name = '';
                     self.host = '';
                     self.port = 6379;
+                });
+
+                self.$.back.addEventListener('click', function() {
+                    self.fire('go-back');
                 });
             }
         });

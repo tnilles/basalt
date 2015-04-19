@@ -12,9 +12,15 @@ var serverConfigurationCtrl = function() {
         router.to('bslt-server-list');
     };
 
+    var back = function() {
+        router.to('bslt-server-list');
+    };
+
     var $serverConfiguration = document.querySelector('bslt-server-configuration');
 
+
     listener.add($serverConfiguration, 'add-server-configuration', createServer);
+    listener.add($serverConfiguration, 'go-back', back);
 };
 
 module.exports = serverConfigurationCtrl;
