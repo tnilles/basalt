@@ -4,19 +4,24 @@
   "description": "Basalt is a Redis client",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "keywords": [
     "redis",
     "client"
   ],
-  "author": "",
-  "license": "ISC",
+  "authors": [
+    "Jordan Abderrachid <jordan@streamroot.io>",
+    "Thierry Nilles <contact@thierrynilles.com>"
+  ],
+  "license": "MIT",
   "dependencies": {
-    "redis": "^0.12.1"
+    "lodash": "^3.6.0",
+    "redis": "^0.12.1",
+    "tunnel-ssh": "^1.0.0"
   },
   "devDependencies": {
-     "mocha": "^2.2.1",
-     "should": "^5.2.0"
+    "mocha": "^2.2.1",
+    "should": "^5.2.0"
   }
 }

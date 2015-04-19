@@ -6,6 +6,8 @@ var win = gui.Window.get(),
         type: "menubar"
     });
 
+var RedisConnector = require('./js/service/RedisConnector.js');
+
 // check operating system for the menu
 if (process.platform === "darwin") {
     nativeMenuBar.createMacBuiltin("Basalt");
@@ -30,12 +32,17 @@ router.init({
 rootCtrl();
 
 /*
-var redis       =   require('redis'),
-    client      =   redis.createClient(6379, '127.0.0.1');
+var client;
 
- client.on("error", function (err) {
-     console.log("Error " + err);
- });
+var redisConnector = RedisConnector();
+redisConnector.on('ready', function (_client) {
+    client = _client;
+    
+    client.on("error", function (err) {
+        console.log("Error " + err);
+    });
+});
+
 
 function doYourThings() {
     var fragment = document.createDocumentFragment();
