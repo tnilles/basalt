@@ -14,7 +14,7 @@
         <ul id="server-list">
             <template repeat="{{server in servers}}">
                 <li>
-                    <bslt-server name="{{server.name}}" on-delete-server="{{deleteServer}}"></bslt-server>
+                    <bslt-server name="{{server.name}}" on-delete-server="{{deleteServer}}" on-connect="{{connect}}"></bslt-server>
                 </li>
             </template>
 
@@ -35,6 +35,9 @@
             },
             deleteServer: function(event, detail, sender) {
                 this.fire('delete-server');
+            },
+            connect: function(event, detail, sender) {
+                this.fire('connect', event);
             }
         });
   </script>

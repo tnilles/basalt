@@ -26,6 +26,8 @@ var RedisConnector = function (connectionOptions) {
 
 	self._connectionOptions = _.defaults(connectionOptions || {}, DEFAULT_CONFIG);
 
+	self._initListeners();
+
 	if (self._connectionOptions.hasOwnProperty('tunnelOptions')) {
 		var tunnelOptions = {
 			host: self._connectionOptions.tunnelOptions.host,
@@ -58,20 +60,15 @@ var RedisConnector = function (connectionOptions) {
 				self.emit('_key-ready');
 			});
 		}
-
-		self.on('_key-ready', function () {
-			self._tunnel = tunnelSSH(tunnelOptions, function (err) {
-				if (err) {
-					self.emit('error', err);
-					return;
-				}
-
-				self.emit('_config-ready');	
-			});
-		});
 	} else {
 		self.emit('_config-ready');
 	}
+};
+
+util.inherits(RedisConnector, EventEmitter);
+
+RedisConnector.prototype._initListeners = function() {
+	var self = this;
 
 	self.on('_config-ready', function () {
 		if (self._tunnel) {
@@ -88,9 +85,18 @@ var RedisConnector = function (connectionOptions) {
 			self.emit('ready', self._client);
 		});
 	});
-};
 
-util.inherits(RedisConnector, EventEmitter);
+	self.on('_key-ready', function () {
+		self._tunnel = tunnelSSH(tunnelOptions, function (err) {
+			if (err) {
+				self.emit('error', err);
+				return;
+			}
+
+			self.emit('_config-ready');
+		});
+	});
+};
 
 /**
  * [getConnection description]

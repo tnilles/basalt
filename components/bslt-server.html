@@ -12,9 +12,9 @@
         Polymer({
             ready: function() {
                 var self = this;
-                //this.$.el.textContent = this.owner + " is ready!";
+
                 this.$.name.addEventListener('click', function() {
-                    console.log('Clicked on', self.name);
+                    self.fire('connect', self.name);
                 });
 
                 this.$.delete.addEventListener('click', function() {
