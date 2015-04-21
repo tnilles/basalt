@@ -8,6 +8,9 @@ var listener = require('../service/listener'),
 var keysExplorerCtrl = function() {
     console.log('loading keys explorer');
 
+    var fetchKeys = function(client, fn) {
+        client.keys('*', fn);
+    };
 
     // Init Redis connection
     var client;
@@ -19,26 +22,20 @@ var keysExplorerCtrl = function() {
         
         console.log('client connected!')
 
-        client.on("error", function (err) {
-            console.log("Error " + err);
+        fetchKeys(client, function(err, replies) {
+            console.log('keys:', replies);
+        });
+
+        client.on('error', function (err) {
+            console.log('Error ' + err);
         });
     });
-
-
-    var createServer = function(event) {
-        servers.add(event.detail);
-        router.to('bslt-server-list');
-    };
 
     var back = function() {
         router.to('bslt-server-list');
     };
 
-    var $serverConfiguration = document.querySelector('bslt-server-configuration');
-
-
-    listener.add($serverConfiguration, 'add-server-configuration', createServer);
-    listener.add($serverConfiguration, 'go-back', back);
+    var $keysExplorer = document.querySelector('bslt-keys-explorer');
 };
 
 module.exports = keysExplorerCtrl;
