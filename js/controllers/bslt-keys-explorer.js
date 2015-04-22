@@ -9,10 +9,6 @@ var listener = require('../service/listener'),
 var keysExplorerCtrl = function() {
     console.log('loading keys explorer');
 
-    var fetchKeys = function(client, fn) {
-        client.keys('*', fn);
-    };
-
     // Init Redis connection
     var client;
 
@@ -20,10 +16,8 @@ var keysExplorerCtrl = function() {
 
     redisConnector.on('ready', function (client) {
         var redisCommands = new RedisCommands(client);
-        
-        console.log('client connected!')
 
-        fetchKeys(client, function(err, replies) {
+        redisCommands.fetchKeys(client, function(err, replies) {
             console.log('keys:', redisCommands.toTree(replies));
         });
 

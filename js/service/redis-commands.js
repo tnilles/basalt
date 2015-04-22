@@ -14,6 +14,10 @@ var RedisCommands = function(client) {
     this._client = client;
 };
 
+RedisCommands.prototype.fetchKeys = function(client, fn) {
+    client.keys('*', fn);
+};
+
 RedisCommands.prototype.toTree = function(keys) {
     var tree = [];
 
