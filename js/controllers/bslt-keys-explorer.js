@@ -3,7 +3,8 @@
 var listener = require('../service/listener'),
     servers = require('../service/servers'),
     router = require('../service/router'),
-    RedisConnector = require('../service/RedisConnector');
+    RedisConnector = require('../service/RedisConnector'),
+    RedisCommands = require('../service/redis-commands');
 
 var keysExplorerCtrl = function() {
     console.log('loading keys explorer');
@@ -17,13 +18,13 @@ var keysExplorerCtrl = function() {
 
     var redisConnector = RedisConnector();
 
-    redisConnector.on('ready', function (_client) {
-        client = _client;
+    redisConnector.on('ready', function (client) {
+        var redisCommands = new RedisCommands(client);
         
         console.log('client connected!')
 
         fetchKeys(client, function(err, replies) {
-            console.log('keys:', replies);
+            console.log('keys:', redisCommands.toTree(replies));
         });
 
         client.on('error', function (err) {
