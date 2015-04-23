@@ -14,11 +14,13 @@ var keysExplorerCtrl = function() {
 
     var redisConnector = RedisConnector();
 
+    var $keysExplorer = document.querySelector('bslt-keys-explorer');
+
     redisConnector.on('ready', function (client) {
         var redisCommands = new RedisCommands(client);
 
         redisCommands.fetchKeys(client, function(err, replies) {
-            console.log('keys:', redisCommands.toTree(replies));
+            $keysExplorer.keys = redisCommands.toTree(replies);
         });
 
         client.on('error', function (err) {
@@ -30,7 +32,6 @@ var keysExplorerCtrl = function() {
         router.to('bslt-server-list');
     };
 
-    var $keysExplorer = document.querySelector('bslt-keys-explorer');
 };
 
 module.exports = keysExplorerCtrl;

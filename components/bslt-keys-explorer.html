@@ -8,45 +8,16 @@
 
         <h1>keys explorer</h1>
 
-        <!--<a href="#" id="back">&#9664;</a>
-
-        <div vertical layout>
-            <div>
-                <paper-input label="Name" value="{{name}}" floatingLabel></paper-input>
-            </div>
-            <div>
-                <paper-input label="Host" value="{{host}}" floatingLabel></paper-input>
-            </div>
-            <div>
-                <paper-input label="Port" value="{{port}}" floatingLabel></paper-input>
-            </div>
-            <div>
-                <paper-button id="addServer" class="colored" raised>Add this server</paper-button>
-            </div>
-        </div>-->
+        <template repeat="{{key in keys | getKeys}}">
+            <div>{{key}}</div>
+        </template>
 
     </template>
     <script>
         Polymer({
-            port: 6379,
-            ready: function() {
-                var self = this;
-
-                /*self.$.addServer.addEventListener('click', function() {
-                    self.fire('add-server-configuration', {
-                        name: self.name,
-                        host: self.host,
-                        port: self.port
-                    });
-
-                    self.name = '';
-                    self.host = '';
-                    self.port = 6379;
-                });
-
-                self.$.back.addEventListener('click', function() {
-                    self.fire('go-back');
-                });*/
+            keys: {},
+            getKeys: function(o) {
+                return Object.keys(o);
             }
         });
   </script>

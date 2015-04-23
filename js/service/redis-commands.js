@@ -19,15 +19,15 @@ RedisCommands.prototype.fetchKeys = function(client, fn) {
 };
 
 RedisCommands.prototype.toTree = function(keys) {
-    var tree = [];
+    var tree = {};
 
     keys.forEach(function(key) {
         var words = key.split(':'),
             subtree = tree;
 
-        words.forEach(function(word) {
+        words.forEach(function(word, index) {
             if (!subtree[word]) {
-                subtree[word] = [];
+                subtree[word] = {};
             }
 
             subtree = subtree[word];
