@@ -1,6 +1,6 @@
 'use strict';
 
-var RedisConnector = require('../js/service/RedisConnector'),
+var RedisConnector = require('../js/service/redis-connector'),
 	should         = require('should');
 
 describe('RedisConnector', function () {

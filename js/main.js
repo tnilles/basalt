@@ -6,8 +6,6 @@ var win = gui.Window.get(),
         type: "menubar"
     });
 
-var RedisConnector = require('./js/service/RedisConnector.js');
-
 // check operating system for the menu
 if (process.platform === "darwin") {
     nativeMenuBar.createMacBuiltin("Basalt");
