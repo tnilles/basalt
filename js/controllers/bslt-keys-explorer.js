@@ -14,10 +14,12 @@ var keysExplorerCtrl = function() {
 
     var redisConnector = RedisConnector();
 
+    var redisCommands;
+
     var $keysExplorer = document.querySelector('bslt-keys-explorer');
 
     redisConnector.on('ready', function (client) {
-        var redisCommands = new RedisCommands(client);
+        redisCommands = new RedisCommands(client);
 
         redisCommands.fetchKeys(client, function(err, replies) {
             $keysExplorer.keys = redisCommands.toTree(replies);
@@ -31,6 +33,20 @@ var keysExplorerCtrl = function() {
     var back = function() {
         router.to('bslt-server-list');
     };
+
+    var selectDB = function(event) {
+        var client = redisConnector.getConnection();
+        client.select(event.detail, function() {
+            console.log('changed db!');
+
+            redisCommands.fetchKeys(client, function(err, replies) {
+                $keysExplorer.keys = redisCommands.toTree(replies);
+            });
+
+        });
+    };
+
+    listener.add($keysExplorer, 'select-database', selectDB);
 
 };
 
