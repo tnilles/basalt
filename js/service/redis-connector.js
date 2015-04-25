@@ -39,7 +39,7 @@ var RedisConnector = function (connectionOptions) {
 		};
 
 		if (!self._connectionOptions.tunnelOptions.password && !self._connectionOptions.tunnelOptions.privateKeyPath) {
-			self.emit('error', new Error('No identification method is provided.'));
+			self.emit('error', new Error('No authentication method is provided.'));
 		}
 
 		if (self._connectionOptions.tunnelOptions.password) {

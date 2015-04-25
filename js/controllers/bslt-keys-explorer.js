@@ -3,7 +3,7 @@
 var listener = require('../service/listener'),
     servers = require('../service/servers'),
     router = require('../service/router'),
-    RedisConnector = require('../service/RedisConnector'),
+    RedisConnector = require('../service/redis-connector'),
     RedisCommands = require('../service/redis-commands');
 
 var keysExplorerCtrl = function() {
