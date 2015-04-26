@@ -1,10 +1,8 @@
 'use strict';
 
-
 Polymer({
     port: 6379,
     ready: function () {
-        console.log('loading serverConfigurationCtrl');
     },
     createServer: function () {
         if (this.name) {

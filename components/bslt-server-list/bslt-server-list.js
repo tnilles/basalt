@@ -1,11 +1,8 @@
 'use strict';
 
-
 Polymer({
     servers: [],
     ready: function () {
-        console.log('loading serverListCtrl');
-
         this.serverService = this.$.serverService;
 
         this.fetchServers();

@@ -8,8 +8,6 @@ Polymer({
     redisCommands: {},
     redisConnector: new RedisConnector(),
     ready: function() {
-        console.log('loading keys explorer');
-
         var self = this;
 
         self.redisConnector.on('ready', function (client) {
@@ -29,7 +27,6 @@ Polymer({
 
         var client = self.redisConnector.getConnection();
         client.select(event.detail, function () {
-            console.log('changed db!');
 
             self.redisCommands.fetchKeys(client, function (err, replies) {
                 self.keys = self.redisCommands.toTree(replies);

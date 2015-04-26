@@ -12,10 +12,6 @@ if (process.platform === 'darwin') {
 
 win.menu = nativeMenuBar;
 
-global.document = document;
-global.window = window;
-
-
 Polymer({
     pages: {},
     ready: function() {
@@ -27,7 +23,6 @@ Polymer({
         } else {
             this.switchPage(null, 1); // server-configuration
         }
-
         
     },
     switchPage: function (event, detail, sender) {
@@ -35,4 +30,3 @@ Polymer({
         this.pages.selected = detail;
     }
 });
-
