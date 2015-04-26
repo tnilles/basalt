@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bslt-server/bslt-server.html">
+
+<polymer-element name="bslt-server-list">
+    <template>
+        <link rel="stylesheet" href="./bslt-server-list.css">
+
+        <h1>Pick a server</h1>
+
+        <template if="{{!servers.length}}">
+            No server yet.
+        </template>
+
+        <ul id="server-list">
+            <template repeat="{{server in servers}}">
+                <li>
+                    <bslt-server name="{{server.name}}"></bslt-server>
+                </li>
+            </template>
+
+            <li>
+                <paper-button id="addServer" class="colored">Or add a new one</paper-button>
+            </li>
+        </ul>
+
+    </template>
+    <script src="./bslt-server-list.js"></script>
+</polymer-element>

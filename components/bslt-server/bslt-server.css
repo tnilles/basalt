@@ -1,0 +1,30 @@
+ul {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+paper-button[raised] {
+    width: 100%;
+}
+
+paper-button.colored {
+    color: #4285f4;
+    margin-top: 40px;
+}
+
+#server-list li {
+    position: relative;
+}
+
+#delete {
+    position: absolute;
+    right: -40px;
+    top: 15px;
+    cursor: pointer;
+}

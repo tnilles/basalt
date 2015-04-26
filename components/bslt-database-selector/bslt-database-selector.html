@@ -1,0 +1,18 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<polymer-element name="bslt-database-selector">
+    <template>
+        <link rel="stylesheet" href="./bslt-database-selector.css">
+
+        <ul id="database-list">
+            <template repeat="{{database in databases}}">
+                <li data-database="{{database}}" on-click="{{selectDB}}">
+                    {{database}}
+                </li>
+            </template>
+        </ul>
+
+    </template>
+    <script src="./bslt-database-selector.js"></script>
+</polymer-element>
