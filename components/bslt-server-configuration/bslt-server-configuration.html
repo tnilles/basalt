@@ -8,7 +8,7 @@
 
         <h1>Server configuration</h1>
 
-        <a href="#" id="back">&#9664;</a>
+        <a href="#" id="back" on-click="{{back}}">&#9664;</a>
 
         <div vertical layout>
             <div>
@@ -21,7 +21,7 @@
                 <paper-input label="Port" value="{{port}}" floatingLabel></paper-input>
             </div>
             <div>
-                <paper-button id="addServer" class="colored" raised>Add this server</paper-button>
+                <paper-button id="addServer" on-click="{{createServer}}" class="colored" raised>Add this server</paper-button>
             </div>
         </div>
 
