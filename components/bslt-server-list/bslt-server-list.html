@@ -15,12 +15,12 @@
         <ul id="server-list">
             <template repeat="{{server in servers}}">
                 <li>
-                    <bslt-server name="{{server.name}}"></bslt-server>
+                    <bslt-server name="{{server.name}}" on-delete-server="{{deleteServer}}" on-connect="{{connect}}"></bslt-server>
                 </li>
             </template>
 
             <li>
-                <paper-button id="addServer" class="colored">Or add a new one</paper-button>
+                <paper-button id="addServer" on-click="{{configureServer}}" class="colored">Or add a new one</paper-button>
             </li>
         </ul>
 
