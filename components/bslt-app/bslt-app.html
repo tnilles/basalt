@@ -1,0 +1,22 @@
+<link rel="import" href="../../js/lib/polymer/polymer.html">
+<link rel="import" href="../../js/lib/core-pages/core-pages.html">
+<link rel="import" href="../../js/lib/core-signals/core-signals.html">
+<link rel="import" href="../bslt-server-configuration/bslt-server-configuration.html">
+<link rel="import" href="../bslt-server-list/bslt-server-list.html">
+<link rel="import" href="../bslt-keys-explorer/bslt-keys-explorer.html">
+<link rel="import" href="../bslt-server-service/bslt-server-service.html">
+
+<polymer-element name="bslt-app">
+    <template>
+        <core-signals on-core-signal-switch-page="{{switchPage}}"></core-signals>
+        <bslt-server-service id="serverService"></bslt-server-service>
+
+        <core-pages id="pages">
+            <bslt-server-list></bslt-server-list>
+            <bslt-server-configuration></bslt-server-configuration>
+            <bslt-keys-explorer></bslt-keys-explorer>
+        </core-pages>
+    </template>
+
+    <script src="./bslt-app.js"></script>
+</polymer-element>

@@ -1,6 +1,5 @@
 'use strict';
 
-var servers = require('./js/service/servers');
 
 Polymer({
     port: 6379,
@@ -8,7 +7,7 @@ Polymer({
         console.log('loading serverConfigurationCtrl');
     },
     createServer: function () {
-        servers.add({
+        this.$.serverService.add({
             name: this.name,
             host: this.host,
             port: this.port
@@ -18,9 +17,9 @@ Polymer({
         this.host = '';
         this.port = 6379;
 
-        //router.to('bslt-server-list');
+        this.fire('core-signal', {name: 'switch-page', data: 0});
     },
     back: function () {
-        //router.to('bslt-server-list');
+        this.fire('core-signal', {name: 'switch-page', data: 0});
     }
 });

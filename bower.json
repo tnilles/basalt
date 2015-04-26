@@ -20,6 +20,7 @@
     "paper-input": "Polymer/paper-input#~0.5.5",
     "paper-button": "Polymer/paper-button#~0.5.5",
     "core-pages": "Polymer/core-pages#~0.5.5",
-    "machina": "~1.0.0"
+    "machina": "~1.0.0",
+    "core-signals": "Polymer/core-signals#^0.5"
   }
 }

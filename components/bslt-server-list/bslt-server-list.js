@@ -1,21 +1,25 @@
 'use strict';
 
-var servers = require('./js/service/servers');
 
 Polymer({
     servers: [],
     ready: function () {
         console.log('loading serverListCtrl');
 
-        this.servers = servers.fetch();
+        this.serverService = this.$.serverService;
+
+        this.fetchServers();
     },
     configureServer: function () {
-        //router.to('bslt-server-configuration');
+        this.fire('core-signal', {name: 'switch-page', data: 1});
     },
     deleteServer: function (event) {
-        servers.remove(event.detail);
+        this.serverService.remove(event.detail);
     },
     connect: function () {
-        //router.to('bslt-keys-explorer');
+        this.fire('core-signal', {name: 'switch-page', data: 2});
+    },
+    fetchServers: function () {
+        this.servers = this.serverService.fetch();
     }
 });

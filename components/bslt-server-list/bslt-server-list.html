@@ -1,10 +1,16 @@
 <link rel="import" href="../../js/lib/polymer/polymer.html">
 <link rel="import" href="../../js/lib/paper-button/paper-button.html">
+<link rel="import" href="../../js/lib/core-signals/core-signals.html">
 <link rel="import" href="../bslt-server/bslt-server.html">
+<link rel="import" href="../bslt-server-service/bslt-server-service.html">
+
 
 <polymer-element name="bslt-server-list">
     <template>
         <link rel="stylesheet" href="./bslt-server-list.css">
+
+        <core-signals on-core-signal-servers-changed="{{fetchServers}}"></core-signals>
+        <bslt-server-service id="serverService"></bslt-server-service>
 
         <h1>Pick a server</h1>
 
