@@ -10,7 +10,7 @@ var _ = require('lodash'),
  *  - corePages: the core-pages html element to base our routing to
  *
  */
-var Router = function(options) {
+var Router = function (options) {
     if (!(this instanceof Router)) {
         return new Router(options);
     }
@@ -18,7 +18,7 @@ var Router = function(options) {
     this._pages = [];
 };
 
-Router.prototype.init = function(options) {
+Router.prototype.init = function (options) {
     if (!options.corePages || !(_.isElement(options.corePages))) {
         throw new Error('Router constructor is missing the corePages option');
     }
@@ -27,7 +27,7 @@ Router.prototype.init = function(options) {
     this._setPagesList(this._corePages);
 };
 
-Router.prototype._setPagesList = function(corePages) {
+Router.prototype._setPagesList = function () {
     var self = this,
         corePagesChildren = this._corePages.children,
         pageName;
@@ -43,11 +43,11 @@ Router.prototype._setPagesList = function(corePages) {
     }
 };
 
-Router.prototype._importController = function(ctrlName) {
+Router.prototype._importController = function (ctrlName) {
     return require('../controllers/' + _.kebabCase(ctrlName));
 };
 
-Router.prototype.to = function(pageName) {
+Router.prototype.to = function (pageName) {
     var page = _.find(this._pages, 'name', pageName);
 
     listener.removeAll();

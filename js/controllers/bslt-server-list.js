@@ -4,18 +4,18 @@ var listener = require('../service/listener'),
     servers = require('../service/servers'),
     router = require('../service/router');
 
-var serverListCtrl = function() {
-    console.log('loading serverListCtrl')
+var serverListCtrl = function () {
+    console.log('loading serverListCtrl');
 
-    var configureServer = function() {
+    var configureServer = function () {
         router.to('bslt-server-configuration');
     };
 
-    var deleteServer = function(event) {
+    var deleteServer = function (event) {
         servers.remove(event.detail);
     };
 
-    var connect = function(event) {
+    var connect = function () {
         router.to('bslt-keys-explorer');
     };
 

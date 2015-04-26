@@ -29,7 +29,7 @@ var RedisConnector = function (connectionOptions) {
 	self._initListeners();
 
 	if (self._connectionOptions.hasOwnProperty('tunnelOptions')) {
-		var tunnelOptions = {
+		self.tunnelOptions = {
 			host: self._connectionOptions.tunnelOptions.host,
 			dstHost: self._connectionOptions.host,
 			dstPort: self._connectionOptions.port,
@@ -45,18 +45,18 @@ var RedisConnector = function (connectionOptions) {
 		if (self._connectionOptions.tunnelOptions.password) {
 			self.emit('_key-ready');
 		} else {
-			fs.readFile(tunnelOptions.privateKeyPath, function (err, data) {
+			fs.readFile(self.tunnelOptions.privateKeyPath, function (err, data) {
 				if (err) {
 					self.emit('error', err);
 					return;
 				}
 
 				if (!data) {
-					self.emit('error', new Error('Unable to find the key with path [' + tunnelOptions.privateKeyPath + ']'));
+					self.emit('error', new Error('Unable to find the key with path [' + self.tunnelOptions.privateKeyPath + ']'));
 					return;
 				}
 
-				tunnelOptions.privateKey = data;
+				self.tunnelOptions.privateKey = data;
 				self.emit('_key-ready');
 			});
 		}
@@ -87,7 +87,7 @@ RedisConnector.prototype._initListeners = function() {
 	});
 
 	self.on('_key-ready', function () {
-		self._tunnel = tunnelSSH(tunnelOptions, function (err) {
+		self._tunnel = tunnelSSH(self.tunnelOptions, function (err) {
 			if (err) {
 				self.emit('error', err);
 				return;
@@ -105,6 +105,5 @@ RedisConnector.prototype._initListeners = function() {
 RedisConnector.prototype.getConnection = function () {
 	return this._client;
 };
-
 
 module.exports = RedisConnector;

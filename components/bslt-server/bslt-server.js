@@ -1,14 +1,14 @@
 'use strict';
 
 Polymer({
-    ready: function() {
+    ready: function () {
         var self = this;
 
-        this.$.name.addEventListener('click', function() {
+        this.$.name.addEventListener('click', function () {
             self.fire('connect', self.name);
         });
 
-        this.$.delete.addEventListener('click', function() {
+        this.$.delete.addEventListener('click', function () {
             self.fire('delete-server', self.name);
         });
     }

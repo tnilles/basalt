@@ -3,7 +3,7 @@
 Polymer({
 	keys: {},
 	client: {},
-	getKeys: function(o) {
+	getKeys: function (o) {
 	    return Object.keys(o);
 	}
 });

@@ -1,12 +1,11 @@
 'use strict';
 
-
 /**
  * A wrapper for redis commands
  *
  * Offers some data structure manipulation too
  */
-var RedisCommands = function(client) {
+var RedisCommands = function (client) {
     if (!(this instanceof RedisCommands)) {
         return new RedisCommands();
     }
@@ -14,18 +13,18 @@ var RedisCommands = function(client) {
     this._client = client;
 };
 
-RedisCommands.prototype.fetchKeys = function(client, fn) {
+RedisCommands.prototype.fetchKeys = function (client, fn) {
     client.keys('*', fn);
 };
 
-RedisCommands.prototype.toTree = function(keys) {
+RedisCommands.prototype.toTree = function (keys) {
     var tree = {};
 
-    keys.forEach(function(key) {
+    keys.forEach(function (key) {
         var words = key.split(':'),
             subtree = tree;
 
-        words.forEach(function(word, index) {
+        words.forEach(function (word) {
             if (!subtree[word]) {
                 subtree[word] = {};
             }
@@ -35,6 +34,6 @@ RedisCommands.prototype.toTree = function(keys) {
     });
 
     return tree;
-}
+};
 
 module.exports = RedisCommands;

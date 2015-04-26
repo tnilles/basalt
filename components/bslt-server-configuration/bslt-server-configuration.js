@@ -2,10 +2,10 @@
 
 Polymer({
     port: 6379,
-    ready: function() {
+    ready: function () {
         var self = this;
 
-        self.$.addServer.addEventListener('click', function() {
+        self.$.addServer.addEventListener('click', function () {
             self.fire('add-server-configuration', {
                 name: self.name,
                 host: self.host,
@@ -17,7 +17,7 @@ Polymer({
             self.port = 6379;
         });
 
-        self.$.back.addEventListener('click', function() {
+        self.$.back.addEventListener('click', function () {
             self.fire('go-back');
         });
     }

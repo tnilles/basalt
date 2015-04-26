@@ -1,18 +1,16 @@
 'use strict';
 
-var servers = require('../service/servers'),
-    router = require('../service/router');
+var Servers = require('../service/servers'),
+	router  = require('../service/router');
 
-var rootCtrl = function() {
+var rootCtrl = function () {
+    var servers = Servers.fetch();
 
-    // If there already are some servers saved
-    var plop = servers.fetch()
-    if (plop) {
+    if (servers) {
         router.to('bslt-server-list');
     } else {
         router.to('bslt-server-configuration');
     }
-
 };
 
 module.exports = rootCtrl;

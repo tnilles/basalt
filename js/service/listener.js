@@ -5,11 +5,11 @@ var _ = require('lodash');
 /**
  * A singleton object to manage application-wide event listeners
  */
-var Listener = function() {
+var Listener = function () {
     this._listeners = [];
 };
 
-Listener.prototype.add = function(element, type, fn) {
+Listener.prototype.add = function (element, type, fn) {
     if (!_.isElement(element)) {
         throw new Error('Can\'t add an event listener on ', element);
     }
@@ -31,7 +31,7 @@ Listener.prototype.add = function(element, type, fn) {
     });
 };
 
-Listener.prototype.remove = function(element, type, listener) {
+Listener.prototype.remove = function (element, type, listener) {
     var removed = _.remove(this._listeners, {
         listener: listener,
         element: element,
@@ -43,13 +43,12 @@ Listener.prototype.remove = function(element, type, listener) {
     }
 };
 
-Listener.prototype.removeAll = function() {
+Listener.prototype.removeAll = function () {
     var l;
 
     while (l = this._listeners.pop()) {
         this.remove(l.element, l.type, l.listener);
     }
 };
-
 
 module.exports = new Listener();

@@ -6,8 +6,11 @@
 	"latedef": true,
 	"newcap": true,
 	"quotmark": "single",
-	"unused": "strict",
 	"predef": [
-			"Polymer"
+			"Polymer",
+			"it",
+			"describe",
+			"console",
+			"window"
 		]
 }
