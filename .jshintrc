@@ -1,0 +1,13 @@
+{
+	"browserify": true,
+	"curly": true,
+	"eqeqeq": true,
+	"indent": 4,
+	"latedef": true,
+	"newcap": true,
+	"quotmark": "single",
+	"unused": "strict",
+	"predef": [
+			"Polymer"
+		]
+}
