@@ -8,7 +8,7 @@
 
         <h1>keys explorer</h1>
 
-        <bslt-database-selector on-select-database="{{selectDB}}"></bslt-database-selector>
+        <bslt-database-selector></bslt-database-selector>
 
         <template repeat="{{key in keys | getKeys}}">
             <div>{{key}}</div>
@@ -21,9 +21,6 @@
             client: {},
             getKeys: function(o) {
                 return Object.keys(o);
-            },
-            selectDB: function(event) {
-                this.fire('select-database', event.detail);
             }
         });
   </script>

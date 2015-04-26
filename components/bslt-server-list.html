@@ -14,7 +14,7 @@
         <ul id="server-list">
             <template repeat="{{server in servers}}">
                 <li>
-                    <bslt-server name="{{server.name}}" on-delete-server="{{deleteServer}}" on-connect="{{connect}}"></bslt-server>
+                    <bslt-server name="{{server.name}}"></bslt-server>
                 </li>
             </template>
 
@@ -32,12 +32,6 @@
                 this.$.addServer.addEventListener('click', function() {
                     this.fire('open-server-configuration');
                 });
-            },
-            deleteServer: function(event, detail, sender) {
-                this.fire('delete-server');
-            },
-            connect: function(event, detail, sender) {
-                this.fire('connect', event);
             }
         });
   </script>
