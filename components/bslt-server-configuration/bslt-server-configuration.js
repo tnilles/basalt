@@ -7,17 +7,19 @@ Polymer({
         console.log('loading serverConfigurationCtrl');
     },
     createServer: function () {
-        this.$.serverService.add({
-            name: this.name,
-            host: this.host,
-            port: this.port
-        });
+        if (this.name) {
+            this.$.serverService.add({
+                name: this.name,
+                host: this.host,
+                port: this.port
+            });
 
-        this.name = '';
-        this.host = '';
-        this.port = 6379;
+            this.name = '';
+            this.host = '';
+            this.port = 6379;
 
-        this.fire('core-signal', {name: 'switch-page', data: 0});
+            this.fire('core-signal', {name: 'switch-page', data: 0});
+        }
     },
     back: function () {
         this.fire('core-signal', {name: 'switch-page', data: 0});

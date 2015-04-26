@@ -1,6 +1,7 @@
 <link rel="import" href="../../js/lib/polymer/polymer.html">
 <link rel="import" href="../../js/lib/paper-input/paper-input.html">
 <link rel="import" href="../../js/lib/paper-button/paper-button.html">
+<link rel="import" href="../../js/lib/core-a11y-keys/core-a11y-keys.html">
 <link rel="import" href="../bslt-server-service/bslt-server-service.html">
 
 <polymer-element name="bslt-server-configuration">
@@ -27,7 +28,8 @@
                 <paper-button id="addServer" on-click="{{createServer}}" class="colored" raised>Add this server</paper-button>
             </div>
         </div>
-
+        
+        <core-a11y-keys keys="enter" on-keys-pressed="{{createServer}}"></core-a11y-keys>
     </template>
     <script src="./bslt-server-configuration.js"></script>
 </polymer-element>
