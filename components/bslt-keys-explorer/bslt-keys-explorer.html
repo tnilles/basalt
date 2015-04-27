@@ -13,7 +13,7 @@
             <template repeat="{{word in path}}">
                 <div class="keys-col">
                     <template repeat="{{key in word | getKeys}}">
-                        <div on-click="{{openWord}}" data-word="{{key}}">{{key}}</div>
+                        <div on-click="{{openWord}}" data-word="{{key}}" class="key-word">{{key}}</div>
                     </template>
                 </div>
             </template>

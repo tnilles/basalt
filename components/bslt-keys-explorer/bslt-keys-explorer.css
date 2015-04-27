@@ -1,0 +1,27 @@
+:host {
+    text-align: left;
+}
+
+.keys-container {
+    padding-left: 40px;
+    font-size: 0;
+    white-space: nowrap;
+    overflow: scroll;
+}
+
+.keys-col {
+    display: inline-block;
+    min-width: 150px;
+    vertical-align: top;
+    font-size: 16px;
+    border-right: 1px solid rgb(203, 199, 199);
+    border-left: 1px solid rgb(203, 199, 199);
+}
+
+.key-word {
+    background: rgb(250, 250, 250);
+    padding: 2px 10px 2px 5px;
+    cursor: pointer;
+    font-family: menlo, monaco, monospace;
+    border-bottom: 1px solid rgb(203, 199, 199);
+}
