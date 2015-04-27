@@ -5,6 +5,7 @@ var RedisConnector = require('./js/service/redis-connector'),
 
 Polymer({
 	keys: {},
+    path: [],
     redisCommands: {},
     redisConnector: new RedisConnector(),
     ready: function() {
@@ -14,7 +15,7 @@ Polymer({
             self.redisCommands = new RedisCommands(client);
 
             self.redisCommands.fetchKeys(client, function (err, replies) {
-                self.keys = self.redisCommands.toTree(replies);
+                self.setKeys(replies);
             });
 
             client.on('error', function (err) {
@@ -29,11 +30,24 @@ Polymer({
         client.select(event.detail, function () {
 
             self.redisCommands.fetchKeys(client, function (err, replies) {
-                self.keys = self.redisCommands.toTree(replies);
+                self.setKeys(replies);
             });
         });
     },
+    setKeys: function (keys) {
+        this.keys = this.redisCommands.toTree(keys);
+        this.path = [];
+        this.path.push(this.keys);
+    },
 	getKeys: function (o) {
 	    return Object.keys(o);
-	}
+	},
+    openWord: function (event, detail, sender) {
+        var word = sender.getAttribute('data-word'),
+            nextPath = this.path[this.path.length - 1][word];
+
+        if (Object.keys(nextPath).length) {
+            this.path.push(nextPath);
+        }
+    }
 });

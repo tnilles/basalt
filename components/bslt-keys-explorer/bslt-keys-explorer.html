@@ -7,13 +7,17 @@
     <template>
         <link rel="stylesheet" href="./bslt-keys-explorer.css">
 
-        <h1>keys explorer</h1>
-
         <bslt-database-selector on-select-database="{{selectDB}}"></bslt-database-selector>
 
-        <template repeat="{{key in keys | getKeys}}">
-            <div>{{key}}</div>
-        </template>
+        <div class="keys-container">
+            <template repeat="{{word in path}}">
+                <div class="keys-col">
+                    <template repeat="{{key in word | getKeys}}">
+                        <div on-click="{{openWord}}" data-word="{{key}}">{{key}}</div>
+                    </template>
+                </div>
+            </template>
+        </div>
 
     </template>
     <script src="./bslt-keys-explorer.js"></script>
