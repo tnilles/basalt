@@ -44,10 +44,17 @@ Polymer({
 	},
     openWord: function (event, detail, sender) {
         var word = sender.getAttribute('data-word'),
+            col = parseInt(sender.getAttribute('data-col')),
+            nextPath;
+
+        this.path = this.path.slice(0, col + 1);
+
+        if (this.path[this.path.length - 1] && this.path[this.path.length - 1][word]) {
             nextPath = this.path[this.path.length - 1][word];
 
-        if (Object.keys(nextPath).length) {
-            this.path.push(nextPath);
+            if (Object.keys(nextPath).length) {
+                this.path.push(nextPath);
+            }
         }
     }
 });
