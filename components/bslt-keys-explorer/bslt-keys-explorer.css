@@ -25,3 +25,7 @@
     font-family: menlo, monaco, monospace;
     border-bottom: 1px solid rgb(203, 199, 199);
 }
+
+.selected {
+    background: rgb(255, 227, 227);
+}

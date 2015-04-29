@@ -47,6 +47,8 @@ Polymer({
             col = parseInt(sender.getAttribute('data-col'), 10),
             nextPath;
 
+        this.selectWord(sender);
+
         this.path = this.path.slice(0, col + 1);
 
         if (this.path[this.path.length - 1] && this.path[this.path.length - 1][word]) {
@@ -56,5 +58,14 @@ Polymer({
                 this.path.push(nextPath);
             }
         }
+    },
+    selectWord: function(wordElement) {
+        var colElements = wordElement.parentElement.querySelectorAll('.key-word');
+
+        [].forEach.call(colElements, function(element) {
+            element.classList.remove('selected');
+        });
+
+        wordElement.classList.add('selected');
     }
 });
