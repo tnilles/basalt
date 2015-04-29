@@ -44,7 +44,7 @@ Polymer({
 	},
     openWord: function (event, detail, sender) {
         var word = sender.getAttribute('data-word'),
-            col = parseInt(sender.getAttribute('data-col')),
+            col = parseInt(sender.getAttribute('data-col'), 10),
             nextPath;
 
         this.path = this.path.slice(0, col + 1);
