@@ -23,3 +23,7 @@
 #database-list li:hover {
     background: rgb(255, 194, 194);
 }
+
+.selected {
+    background: rgb(229, 53, 53);
+}
