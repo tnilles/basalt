@@ -2,11 +2,15 @@
     text-align: left;
 }
 
-.keys-container {
+#keys-container {
     padding-left: 40px;
-    font-size: 0;
+    display: inline-block;
     white-space: nowrap;
     overflow: scroll;
+}
+
+.keys-cols {
+    font-size: 0;
 }
 
 .keys-col {

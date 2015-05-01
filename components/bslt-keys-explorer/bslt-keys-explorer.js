@@ -56,6 +56,7 @@ Polymer({
 
             if (Object.keys(nextPath).length) {
                 this.path.push(nextPath);
+                this.scrollRight();
             }
         }
     },
@@ -67,5 +68,13 @@ Polymer({
         });
 
         wordElement.classList.add('selected');
+    },
+    scrollRight: function() {
+        var scrolling = this.$['keys-container'].offsetWidth;
+
+        // Had to setTimeout here, otherwise the scrollTo is not fired...
+        setTimeout(function() {
+            window.scrollTo(scrolling, 0);
+        }, 0);
     }
 });

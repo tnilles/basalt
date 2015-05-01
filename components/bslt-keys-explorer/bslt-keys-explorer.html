@@ -9,14 +9,16 @@
 
         <bslt-database-selector on-select-database="{{selectDB}}"></bslt-database-selector>
 
-        <div class="keys-container">
-            <template repeat="{{word, col in path}}">
-                <div class="keys-col">
-                    <template repeat="{{key in word | getKeys}}">
-                        <div on-click="{{openWord}}" data-word="{{key}}" data-col="{{col}}" class="key-word">{{key}}</div>
-                    </template>
-                </div>
-            </template>
+        <div id="keys-container">
+            <div class="keys-cols">
+                <template repeat="{{word, col in path}}">
+                    <div class="keys-col">
+                        <template repeat="{{key in word | getKeys}}">
+                            <div on-click="{{openWord}}" data-word="{{key}}" data-col="{{col}}" class="key-word">{{key}}</div>
+                        </template>
+                    </div>
+                </template>
+            </div>
         </div>
 
     </template>
