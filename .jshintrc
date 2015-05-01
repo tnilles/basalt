@@ -6,11 +6,9 @@
 	"latedef": true,
 	"newcap": true,
 	"quotmark": "single",
+	"mocha": true,
+	"browser": true,
 	"predef": [
-			"Polymer",
-			"it",
-			"describe",
-			"console",
-			"window"
-		]
+		"Polymer"
+	]
 }
