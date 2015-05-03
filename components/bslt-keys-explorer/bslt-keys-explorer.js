@@ -4,6 +4,7 @@ var RedisConnector = require('./js/service/redis-connector'),
     RedisCommands = require('./js/service/redis-commands');
 
 Polymer({
+    currentKey: [],
 	keys: {},
     path: [],
     redisCommands: {},
@@ -52,6 +53,10 @@ Polymer({
         this.path = this.path.slice(0, col + 1);
 
         if (this.path[this.path.length - 1] && this.path[this.path.length - 1][word]) {
+            this.currentKey = this.currentKey.slice(0, col);
+            this.currentKey.push(word);
+            console.log(this.currentKey.join(':'))
+
             nextPath = this.path[this.path.length - 1][word];
 
             if (Object.keys(nextPath).length) {
