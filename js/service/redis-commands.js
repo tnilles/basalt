@@ -21,6 +21,18 @@ RedisCommands.prototype.getType = function (key, fn) {
     this._client.type(key, fn);
 };
 
+RedisCommands.prototype.hgetall = function (key, fn) {
+    this._client.hgetall(key, fn);
+};
+
+RedisCommands.prototype.smembers = function (key, fn) {
+    this._client.smembers(key, fn);
+};
+
+RedisCommands.prototype.get = function (key, fn) {
+    this._client.get(key, fn);
+};
+
 RedisCommands.prototype.toTree = function (keys) {
     var tree = {};
 

@@ -9,7 +9,7 @@ Polymer({
     path: [],
     redisCommands: {},
     redisConnector: new RedisConnector(),
-    ready: function() {
+    ready: function () {
         var self = this;
 
         self.redisConnector.on('ready', function (client) {
@@ -67,11 +67,28 @@ Polymer({
         }
     },
     openKey: function (key) {
-        this.redisCommands.getType(key, function (err, type) {
-            console.log('key type:', type);
+        var self = this;
+
+        self.redisCommands.getType(key, function (err, type) {
+            switch (type) {
+                case 'string':
+                    self.redisCommands.get(key, self.showKeyContent);
+                break;
+
+                case 'set':
+                    self.redisCommands.smembers(key, self.showKeyContent);
+                break;
+
+                case 'hash':
+                    self.redisCommands.hgetall(key, self.showKeyContent);
+                break;
+            }
         });
     },
-    selectWord: function(wordElement) {
+    showKeyContent: function (err, content) {
+        console.log('>', err, content);
+    },
+    selectWord: function (wordElement) {
         var colElements = wordElement.parentElement.querySelectorAll('.key-word');
 
         [].forEach.call(colElements, function(element) {
@@ -80,7 +97,7 @@ Polymer({
 
         wordElement.classList.add('selected');
     },
-    scrollRight: function() {
+    scrollRight: function () {
         var scrolling = this.$['keys-container'].offsetWidth;
 
         // Had to setTimeout here, otherwise the scrollTo is not fired...
