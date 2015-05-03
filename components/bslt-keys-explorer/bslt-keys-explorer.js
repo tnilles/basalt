@@ -55,15 +55,21 @@ Polymer({
         if (this.path[this.path.length - 1] && this.path[this.path.length - 1][word]) {
             this.currentKey = this.currentKey.slice(0, col);
             this.currentKey.push(word);
-            console.log(this.currentKey.join(':'))
 
             nextPath = this.path[this.path.length - 1][word];
 
             if (Object.keys(nextPath).length) {
                 this.path.push(nextPath);
                 this.scrollRight();
+            } else {
+                this.openKey(this.currentKey.join(':'));
             }
         }
+    },
+    openKey: function (key) {
+        this.redisCommands.getType(key, function (err, type) {
+            console.log('key type:', type);
+        });
     },
     selectWord: function(wordElement) {
         var colElements = wordElement.parentElement.querySelectorAll('.key-word');

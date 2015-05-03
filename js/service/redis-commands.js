@@ -17,6 +17,10 @@ RedisCommands.prototype.fetchKeys = function (client, fn) {
     client.keys('*', fn);
 };
 
+RedisCommands.prototype.getType = function (key, fn) {
+    this._client.type(key, fn);
+};
+
 RedisCommands.prototype.toTree = function (keys) {
     var tree = {};
 
