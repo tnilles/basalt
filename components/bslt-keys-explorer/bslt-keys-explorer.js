@@ -25,11 +25,12 @@ Polymer({
         });
     },
     selectDB: function (event) {
-        var self = this;
+        var self = this,
+            client = self.redisConnector.getConnection();
 
-        var client = self.redisConnector.getConnection();
+        this.keyContent = {};
+
         client.select(event.detail, function () {
-
             self.redisCommands.fetchKeys(client, function (err, replies) {
                 self.setKeys(replies);
             });
@@ -72,21 +73,21 @@ Polymer({
         self.redisCommands.getType(key, function (err, type) {
             switch (type) {
                 case 'string':
-                    self.redisCommands.get(key, self.showKeyContent);
+                    self.redisCommands.get(key, self.showKeyContent.bind(self));
                 break;
 
                 case 'set':
-                    self.redisCommands.smembers(key, self.showKeyContent);
+                    self.redisCommands.smembers(key, self.showKeyContent.bind(self));
                 break;
 
                 case 'hash':
-                    self.redisCommands.hgetall(key, self.showKeyContent);
+                    self.redisCommands.hgetall(key, self.showKeyContent.bind(self));
                 break;
             }
         });
     },
     showKeyContent: function (err, content) {
-        console.log('>', err, content);
+        this.keyContent = content;
     },
     selectWord: function (wordElement) {
         var colElements = wordElement.parentElement.querySelectorAll('.key-word');
@@ -96,6 +97,8 @@ Polymer({
         });
 
         wordElement.classList.add('selected');
+
+        this.keyContent = {};
     },
     scrollRight: function () {
         var scrolling = this.$['keys-container'].offsetWidth;

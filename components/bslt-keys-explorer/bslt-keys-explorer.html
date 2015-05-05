@@ -2,6 +2,7 @@
 <link rel="import" href="../../js/lib/paper-input/paper-input.html">
 <link rel="import" href="../../js/lib/paper-button/paper-button.html">
 <link rel="import" href="../bslt-database-selector/bslt-database-selector.html">
+<link rel="import" href="../bslt-key-content/bslt-key-content.html">
 
 <polymer-element name="bslt-keys-explorer">
     <template>
@@ -18,6 +19,11 @@
                         </template>
                     </div>
                 </template>
+
+                <div class="keys-col">
+                    <bslt-key-content content="{{keyContent}}"></bslt-key-content>
+                </div>
+
             </div>
         </div>
 
