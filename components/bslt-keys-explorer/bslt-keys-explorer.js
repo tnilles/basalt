@@ -29,6 +29,7 @@ Polymer({
             client = self.redisConnector.getConnection();
 
         this.keyContent = {};
+        this.keyType = '';
 
         client.select(event.detail, function () {
             self.redisCommands.fetchKeys(client, function (err, replies) {
@@ -73,21 +74,28 @@ Polymer({
         self.redisCommands.getType(key, function (err, type) {
             switch (type) {
                 case 'string':
-                    self.redisCommands.get(key, self.showKeyContent.bind(self));
+                    self.redisCommands.get(key, function(err, content) {
+                        self.showKeyContent(err, content, type);
+                    });
                 break;
 
                 case 'set':
-                    self.redisCommands.smembers(key, self.showKeyContent.bind(self));
+                    self.redisCommands.smembers(key, function(err, content) {
+                        self.showKeyContent(err, content, type);
+                    });
                 break;
 
                 case 'hash':
-                    self.redisCommands.hgetall(key, self.showKeyContent.bind(self));
+                    self.redisCommands.hgetall(key, function(err, content) {
+                        self.showKeyContent(err, content, type);
+                    });
                 break;
             }
         });
     },
-    showKeyContent: function (err, content) {
+    showKeyContent: function (err, content, type) {
         this.keyContent = content;
+        this.keyType = type;
     },
     selectWord: function (wordElement) {
         var colElements = wordElement.parentElement.querySelectorAll('.key-word');
@@ -99,6 +107,7 @@ Polymer({
         wordElement.classList.add('selected');
 
         this.keyContent = {};
+        this.keyType = '';
     },
     scrollRight: function () {
         var scrolling = this.$['keys-container'].offsetWidth;

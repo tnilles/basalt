@@ -1,0 +1,38 @@
+<link rel="import" href="../../js/lib/polymer/polymer.html">
+
+<polymer-element name="bslt-key-content" attributes="content type">
+    <template>
+        <link rel="stylesheet" href="./bslt-key-content.css">
+
+        <div>
+            <template if="{{type === 'hash'}}">
+                <table>
+                    <template repeat="{{item in content | getKeys}}">
+                        <tr>
+                            <td>{{item}}</td>
+                            <td>{{content[item]}}</td>
+                        </tr>
+                    </template>
+                </table>
+            </template>
+
+            <template if="{{type === 'set'}}">
+                <table>
+                    <ul>
+                        <template repeat="{{item in content}}">
+                            <li>{{item}}</li>
+                        </template>
+                    </ul>
+                </table>
+            </template>
+
+            <template if="{{type === 'string'}}">
+                <table>
+                    <h3>{{content}}</h3>
+                </table>
+            </template>
+        </div>
+
+    </template>
+    <script src="./bslt-key-content.js"></script>
+</polymer-element>
