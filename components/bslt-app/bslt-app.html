@@ -8,13 +8,16 @@
 
 <polymer-element name="bslt-app">
     <template>
-        <core-signals on-core-signal-switch-page="{{switchPage}}"></core-signals>
+        <core-signals
+            on-core-signal-switch-page="{{switchPage}}"
+            on-core-signal-change-server="{{changeServer}}"
+        ></core-signals>
         <bslt-server-service id="serverService"></bslt-server-service>
 
         <core-pages id="pages">
             <bslt-server-list></bslt-server-list>
             <bslt-server-configuration></bslt-server-configuration>
-            <bslt-keys-explorer></bslt-keys-explorer>
+            <bslt-keys-explorer server="{{server}}"></bslt-keys-explorer>
         </core-pages>
     </template>
 

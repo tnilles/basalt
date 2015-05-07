@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 Polymer({
     servers: [],
     ready: function () {
@@ -13,7 +15,10 @@ Polymer({
     deleteServer: function (event) {
         this.serverService.remove(event.detail);
     },
-    connect: function () {
+    connect: function (event, detail) {
+        var server = _.find(this.servers, 'name', detail);
+
+        this.fire('core-signal', {name: 'change-server', data: server});
         this.fire('core-signal', {name: 'switch-page', data: 2});
     },
     fetchServers: function () {

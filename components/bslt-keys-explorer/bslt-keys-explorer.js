@@ -4,12 +4,23 @@ var RedisConnector = require('./js/service/redis-connector'),
     RedisCommands = require('./js/service/redis-commands');
 
 Polymer({
+    server: {},
     currentKey: [],
 	keys: {},
     path: [],
     redisCommands: {},
-    redisConnector: new RedisConnector(),
-    ready: function () {
+    redisConnector: {},
+    serverChanged: function () {
+        if (this.server && Object.keys(this.server).length) {
+            this.redisConnector = new RedisConnector({
+                host: this.server.host,
+                port: this.server.port
+            });
+
+            this.initKeys();
+        }
+    },
+    initKeys: function () {
         var self = this;
 
         self.redisConnector.on('ready', function (client) {

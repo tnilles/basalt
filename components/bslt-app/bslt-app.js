@@ -14,6 +14,7 @@ win.menu = nativeMenuBar;
 
 Polymer({
     pages: {},
+    server: {},
     ready: function() {
         this.pages = this.$.pages;
         var serverService = this.$.serverService;
@@ -26,7 +27,9 @@ Polymer({
         
     },
     switchPage: function (event, detail, sender) {
-        console.log(event, detail)
         this.pages.selected = detail;
+    },
+    changeServer: function (event, detail, sender) {
+        this.server = detail;
     }
 });
