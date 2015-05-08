@@ -10,14 +10,21 @@ Polymer({
     path: [],
     redisCommands: {},
     redisConnector: {},
+    error: '',
     serverChanged: function () {
-        if (this.server && Object.keys(this.server).length) {
-            this.redisConnector = new RedisConnector({
-                host: this.server.host,
-                port: this.server.port
+        var self = this;
+
+        if (self.server && Object.keys(self.server).length) {
+            self.redisConnector = new RedisConnector({
+                host: self.server.host,
+                port: self.server.port
             });
 
-            this.initKeys();
+            self.redisConnector.on('error', function (error) {
+                self.error = 'Could not connect to this server. Please check your configuration and try again.';
+            });
+
+            self.initKeys();
         }
     },
     initKeys: function () {

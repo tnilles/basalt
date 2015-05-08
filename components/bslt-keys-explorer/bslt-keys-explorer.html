@@ -11,6 +11,10 @@
         <bslt-database-selector on-select-database="{{selectDB}}"></bslt-database-selector>
 
         <div id="keys-container">
+            <template if="{{error}}">
+                <p class="error">{{error}}</p>
+            </template>
+
             <div class="keys-cols">
                 <template repeat="{{word, col in path}}">
                     <div class="keys-col">

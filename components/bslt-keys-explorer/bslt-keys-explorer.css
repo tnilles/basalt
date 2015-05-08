@@ -33,3 +33,14 @@
 .selected {
     background: rgb(255, 227, 227);
 }
+
+.error {
+    color: rgb(184, 0, 0);
+    text-align: center;
+    width: 80%;
+    white-space: normal;
+    margin: 100px auto;
+    background: rgb(240, 240, 240);
+    padding: 20px;
+    box-shadow: 0px 0px 1px rgb(161, 161, 161);
+}
