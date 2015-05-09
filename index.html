@@ -13,18 +13,6 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-
         <bslt-app></bslt-app>
-
-        <script>
-            /* dev only: reload the app when a file changes */
-            var path = './';
-            var fs = require('fs');
-
-            fs.watch(path, {recursive: true}, function() {
-                if (location)
-                    location.reload();
-            });
-        </script>
     </body>
 </html>
