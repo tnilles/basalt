@@ -22,6 +22,7 @@ Polymer({
 
             self.redisConnector.on('error', function (error) {
                 self.error = 'Could not connect to this server. Please check your configuration and try again.';
+                self.redisConnector.end();
             });
 
             self.initKeys();

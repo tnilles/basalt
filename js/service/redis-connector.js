@@ -106,4 +106,12 @@ RedisConnector.prototype.getConnection = function () {
 	return this._client;
 };
 
+
+/**
+ * Ends the connection to the server
+ */
+RedisConnector.prototype.end = function () {
+	this._client.end();
+};
+
 module.exports = RedisConnector;
