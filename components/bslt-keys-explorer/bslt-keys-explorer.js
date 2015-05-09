@@ -134,5 +134,16 @@ Polymer({
         setTimeout(function() {
             window.scrollTo(scrolling, 0);
         }, 0);
+    },
+    reset: function () {
+        var self = this;
+
+        self.error = '';
+        self.server = {};
+        self.currentKey = [];
+        self.keys = {};
+        self.path = [];
+        self.redisCommands = {};
+        self.redisConnector = {};
     }
 });

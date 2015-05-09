@@ -8,7 +8,7 @@
     <template>
         <link rel="stylesheet" href="./bslt-keys-explorer.css">
 
-        <bslt-database-selector on-select-database="{{selectDB}}"></bslt-database-selector>
+        <bslt-database-selector on-select-database="{{selectDB}}" on-to-server-configuration="{{reset}}"></bslt-database-selector>
 
         <div id="keys-container">
             <template if="{{error}}">

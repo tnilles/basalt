@@ -12,5 +12,9 @@ Polymer({
         sender.classList.add('selected');
 
         this.fire('select-database', sender.getAttribute('data-database'));
+    },
+    toServerList: function () {
+        this.fire('to-server-configuration');
+        this.fire('core-signal', {name: 'switch-page', data: 0});
     }
 });
