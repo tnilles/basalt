@@ -6,6 +6,7 @@ var RedisConnector = require('./js/service/redis-connector'),
 Polymer({
     server: {},
     currentKey: [],
+    keyContent: {},
 	keys: {},
     path: [],
     redisCommands: {},
@@ -142,6 +143,7 @@ Polymer({
         self.error = '';
         self.server = {};
         self.currentKey = [];
+        self.keyContent = null;
         self.keys = {};
         self.path = [];
         self.redisCommands = {};

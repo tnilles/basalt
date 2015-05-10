@@ -24,9 +24,11 @@
                     </div>
                 </template>
 
-                <div class="keys-col">
-                    <bslt-key-content content="{{keyContent}}" type="{{keyType}}"></bslt-key-content>
-                </div>
+                <template if="{{keyContent}}">
+                    <div class="keys-col">
+                        <bslt-key-content content="{{keyContent}}" type="{{keyType}}"></bslt-key-content>
+                    </div>
+                </template>
 
             </div>
         </div>
