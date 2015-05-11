@@ -35,7 +35,7 @@ Polymer({
         self.redisConnector.on('ready', function (client) {
             self.redisCommands = new RedisCommands(client);
 
-            self.redisCommands.fetchKeys(client, function (err, replies) {
+            self.redisCommands.fetchKeys(function (err, replies) {
                 self.setKeys(replies);
             });
 
@@ -52,7 +52,7 @@ Polymer({
         this.keyType = '';
 
         client.select(event.detail, function () {
-            self.redisCommands.fetchKeys(client, function (err, replies) {
+            self.redisCommands.fetchKeys(function (err, replies) {
                 self.setKeys(replies);
             });
         });

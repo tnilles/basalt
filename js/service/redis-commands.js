@@ -13,8 +13,25 @@ var RedisCommands = function (client) {
     this._client = client;
 };
 
-RedisCommands.prototype.fetchKeys = function (client, fn) {
-    client.keys('*', fn);
+RedisCommands.prototype.fetchKeys = function (fn) {
+    var self = this,
+        keys = [];
+
+    var scan = function(index) {
+        self._client.scan(index, function(error, result) {
+            keys = keys.concat(result[1]);
+
+            var nextIndex = parseInt(result[0], 10);
+
+            if (nextIndex !== 0 && !error) {
+                scan(nextIndex);
+            } else {
+                fn(error, keys);
+            }
+        });
+    }
+
+    scan(0);
 };
 
 RedisCommands.prototype.getType = function (key, fn) {
