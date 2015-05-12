@@ -12,6 +12,7 @@
     padding-top: 50px;
     color: rgb(250, 250, 250);
     text-align: center;
+    z-index: 1000;
 }
 
 #database-list li {

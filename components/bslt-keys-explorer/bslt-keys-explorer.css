@@ -13,7 +13,7 @@
     font-size: 0;
 }
 
-.keys-col {
+.keys-col, .key-content-container {
     display: inline-block;
     min-width: 150px;
     vertical-align: top;
@@ -32,6 +32,18 @@
 
 .selected {
     background: rgb(255, 227, 227);
+    position: relative;
+    z-index: 100;
+}
+
+.selected:after {
+    content: ':';
+    position: absolute;
+    right: 0;
+    display: block;
+    top: 0;
+    width: 10px;
+    height: 10px;
 }
 
 .error {
