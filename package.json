@@ -13,6 +13,7 @@
   "authors": [
     "Jordan Abderrachid <jordan@streamroot.io>",
     "Thierry Nilles <contact@thierrynilles.com>"
+    "Julien Polge <julien@streamroot.io>" 
   ],
   "license": "MIT",
   "dependencies": {
