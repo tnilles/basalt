@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="./bslt-database-selector.css">
 
         <ul id="database-list">
+            <img src="../../images/logo.svg" id="logo" />
             <li on-click="{{toServerList}}">&#9664;</li>
             <template repeat="{{database in databases}}">
                 <li data-database="{{database}}" on-click="{{selectDB}}">
