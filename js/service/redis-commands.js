@@ -57,12 +57,16 @@ RedisCommands.prototype.toTree = function (keys) {
         var words = key.split(':'),
             subtree = tree;
 
-        words.forEach(function (word) {
+        words.forEach(function (word, index) {
             if (!subtree[word]) {
-                subtree[word] = {};
+                subtree[word] = {isLeaf: false, children: {}};
             }
 
-            subtree = subtree[word];
+            if (words.length - 1 === index) {
+                subtree[word].isLeaf = true;
+            }
+
+            subtree = subtree[word].children;
         });
     });
 
