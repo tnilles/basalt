@@ -74,13 +74,13 @@ Polymer({
 
         this.path = this.path.slice(0, col + 1);
 
-        if (this.path[this.path.length - 1] && this.path[this.path.length - 1][word]) {
+        if (this.path[this.path.length - 1] && this.path[this.path.length - 1].children[word]) {
             this.currentKey = this.currentKey.slice(0, col);
             this.currentKey.push(word);
 
-            nextPath = this.path[this.path.length - 1][word];
+            nextPath = this.path[this.path.length - 1].children[word];
 
-            if (Object.keys(nextPath).length) {
+            if (!nextPath.isLeaf) {
                 this.path.push(nextPath);
                 this.scrollRight();
             } else {
