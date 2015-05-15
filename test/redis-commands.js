@@ -19,13 +19,12 @@ describe('RedisCommands', function () {
 
             var tree = redisCommands.toTree(keys);
 
-            tree.should.have.ownProperty('abc');
-            tree.should.have.ownProperty('lmn');
+            tree.should.have.ownProperty('isLeaf');
+            tree.should.have.ownProperty('children');
 
-            tree.abc.should.have.ownProperty('isLeaf');
-            tree.abc.should.have.ownProperty('children');
-
-            tree.abc.isLeaf.should.not.be.ok;
+            tree.children.should.have.ownProperty('abc');
+            tree.children.should.have.ownProperty('lmn');
+            tree.isLeaf.should.not.be.ok;
         });
 
         it('Should mark some nodes as leaves', function () {
@@ -39,12 +38,13 @@ describe('RedisCommands', function () {
 
             var tree = redisCommands.toTree(keys);
 
-            tree.abc.isLeaf.should.be.ok;
-            tree.abc.children.xyz.isLeaf.should.be.ok;
-            tree.abc.children.ijk.isLeaf.should.be.ok;
-            tree.abc.children.ijk.children.lmn.isLeaf.should.be.ok;
-            tree.lmn.isLeaf.should.not.be.ok;
-            tree.lmn.children.opq.isLeaf.should.be.ok;
+            tree.isLeaf.should.not.be.ok;
+            tree.children.abc.isLeaf.should.be.ok;
+            tree.children.abc.children.xyz.isLeaf.should.be.ok;
+            tree.children.abc.children.ijk.isLeaf.should.be.ok;
+            tree.children.abc.children.ijk.children.lmn.isLeaf.should.be.ok;
+            tree.children.lmn.isLeaf.should.not.be.ok;
+            tree.children.lmn.children.opq.isLeaf.should.be.ok;
         });
 
     });

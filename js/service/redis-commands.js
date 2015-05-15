@@ -51,11 +51,11 @@ RedisCommands.prototype.get = function (key, fn) {
 };
 
 RedisCommands.prototype.toTree = function (keys) {
-    var tree = {};
+    var tree = {isLeaf: false, children: {}};
 
     keys.forEach(function (key) {
         var words = key.split(':'),
-            subtree = tree;
+            subtree = tree.children;
 
         words.forEach(function (word, index) {
             if (!subtree[word]) {
