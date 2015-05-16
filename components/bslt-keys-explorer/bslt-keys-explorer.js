@@ -80,10 +80,12 @@ Polymer({
 
             nextPath = this.path[this.path.length - 1].children[word];
 
-            if (!nextPath.isLeaf) {
+            if (!nextPath.isLeaf || Object.keys(nextPath.children).length) {
                 this.path.push(nextPath);
                 this.scrollRight();
-            } else {
+            }
+
+            if (nextPath.isLeaf) {
                 this.openKey(this.currentKey.join(':'));
             }
         }
