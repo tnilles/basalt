@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="./bslt-key-content.css">
 
         <div>
-            <template if="{{type === 'hash'}}">
+            <template if="{{type === 'hash' || type === 'zset'}}">
                 <table>
                     <template repeat="{{item in content | getKeys}}">
                         <tr>

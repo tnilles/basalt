@@ -112,6 +112,12 @@ Polymer({
                         self.showKeyContent(err, content, type);
                     });
                 break;
+
+                case 'zset':
+                    self.redisCommands.zgetall(key, function(err, content) {
+                        self.showKeyContent(err, content, type);
+                    });
+                break;
             }
         });
     },
