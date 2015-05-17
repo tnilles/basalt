@@ -16,7 +16,7 @@
                 </table>
             </template>
 
-            <template if="{{type === 'set'}}">
+            <template if="{{type === 'set' || type === 'list'}}">
                 <table>
                     <ul>
                         <template repeat="{{item in content}}">

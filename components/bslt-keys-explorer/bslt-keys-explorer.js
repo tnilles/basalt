@@ -118,6 +118,12 @@ Polymer({
                         self.showKeyContent(err, content, type);
                     });
                 break;
+
+                case 'list':
+                    self.redisCommands.lgetall(key, function (err, content) {
+                        self.showKeyContent(err, content, type);
+                    });
+                break;
             }
         });
     },

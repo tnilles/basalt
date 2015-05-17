@@ -72,6 +72,10 @@ var arrayToObject = function (array) {
     return _.zipObject(_.chunk(array, 2));
 };
 
+RedisCommands.prototype.lgetall = function (key, fn) {
+    this._client.lrange(key, 0, -1, fn);
+};
+
 RedisCommands.prototype.hgetall = function (key, fn) {
     this._client.hgetall(key, fn);
 };
