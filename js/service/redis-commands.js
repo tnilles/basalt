@@ -40,7 +40,7 @@ RedisCommands.prototype.getType = function (key, fn) {
     this._client.type(key, fn);
 };
 
-RedisCommands.prototype.zgetall = function (key, fn) {
+RedisCommands.prototype.getZset = function (key, fn) {
     var self = this,
         set = {};
 
@@ -72,19 +72,19 @@ var arrayToObject = function (array) {
     return _.zipObject(_.chunk(array, 2));
 };
 
-RedisCommands.prototype.lgetall = function (key, fn) {
+RedisCommands.prototype.getList = function (key, fn) {
     this._client.lrange(key, 0, -1, fn);
 };
 
-RedisCommands.prototype.hgetall = function (key, fn) {
+RedisCommands.prototype.getHash = function (key, fn) {
     this._client.hgetall(key, fn);
 };
 
-RedisCommands.prototype.smembers = function (key, fn) {
+RedisCommands.prototype.getSet = function (key, fn) {
     this._client.smembers(key, fn);
 };
 
-RedisCommands.prototype.get = function (key, fn) {
+RedisCommands.prototype.getString = function (key, fn) {
     this._client.get(key, fn);
 };
 

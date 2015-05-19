@@ -94,37 +94,9 @@ Polymer({
         var self = this;
 
         self.redisCommands.getType(key, function (err, type) {
-            switch (type) {
-                case 'string':
-                    self.redisCommands.get(key, function(err, content) {
-                        self.showKeyContent(err, content, type);
-                    });
-                break;
-
-                case 'set':
-                    self.redisCommands.smembers(key, function(err, content) {
-                        self.showKeyContent(err, content, type);
-                    });
-                break;
-
-                case 'hash':
-                    self.redisCommands.hgetall(key, function(err, content) {
-                        self.showKeyContent(err, content, type);
-                    });
-                break;
-
-                case 'zset':
-                    self.redisCommands.zgetall(key, function(err, content) {
-                        self.showKeyContent(err, content, type);
-                    });
-                break;
-
-                case 'list':
-                    self.redisCommands.lgetall(key, function (err, content) {
-                        self.showKeyContent(err, content, type);
-                    });
-                break;
-            }
+            self.redisCommands['get' + _.capitalize(type)](key, function (err, content) {
+                self.showKeyContent(err, content, type);
+            });
         });
     },
     showKeyContent: function (err, content, type) {
