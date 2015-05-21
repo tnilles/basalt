@@ -7,7 +7,15 @@ module.exports = function (grunt) {
                 buildDir: './build',
                 version: '0.12.1'
             },
-            src: ['./**/*']
+            src: [
+                'index.html',
+                'package.json',
+                './components/**/*',
+                './css/**/*',
+                './images/**/*',
+                './js/**/*',
+                './node_module/**/*'
+            ]
         }
     });
 
