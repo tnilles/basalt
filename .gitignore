@@ -4,3 +4,5 @@ nwjs.app
 dump.rdb
 npm-debug.log
 js/lib/*
+cache/*
+build/*

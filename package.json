@@ -13,7 +13,7 @@
   "authors": [
     "Jordan Abderrachid <jordan@streamroot.io>",
     "Thierry Nilles <contact@thierrynilles.com>",
-    "Julien Polge <julien@streamroot.io>" 
+    "Julien Polge <julien@streamroot.io>"
   ],
   "license": "MIT",
   "dependencies": {
@@ -22,6 +22,8 @@
     "tunnel-ssh": "^1.0.0"
   },
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-node-webkit-builder": "^1.0.2",
     "mocha": "^2.2.1",
     "should": "^5.2.0"
   }
