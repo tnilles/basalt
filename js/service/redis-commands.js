@@ -1,6 +1,7 @@
 'use strict';
 
-var _ = require('lodash');
+var _           = require('lodash'),
+    transformer = require('./data-transformers.js');
 
 /**
  * A wrapper for redis commands
@@ -31,7 +32,7 @@ RedisCommands.prototype.fetchKeys = function (fn) {
                 fn(error, keys);
             }
         });
-    }
+    };
 
     scan(0);
 };
@@ -46,7 +47,7 @@ RedisCommands.prototype.getZset = function (key, fn) {
 
     var scan = function (index) {
         self._client.zscan(key, index, function (error, result) {
-            set = _.assign(set, arrayToObject(result[1]));
+            set = _.assign(set, transformer.arrayToObject(result[1]));
 
             var nextIndex = parseInt(result[0], 10);
 
@@ -56,20 +57,9 @@ RedisCommands.prototype.getZset = function (key, fn) {
                 fn(error, set);
             }
         });
-    }
+    };
 
     scan(0);
-};
-
-// TODO: Move this elsewhere
-/**
- * Converts an array to an object, taking each odd element
- * as a key, and each even element as a value.
- *
- * eg: [1, 2, 3, 4, 5, 6] would translate to {'1': 2, '3': 4, '5': 6}
- */
-var arrayToObject = function (array) {
-    return _.zipObject(_.chunk(array, 2));
 };
 
 RedisCommands.prototype.getList = function (key, fn) {
@@ -110,5 +100,6 @@ RedisCommands.prototype.toTree = function (keys) {
 
     return tree;
 };
+
 
 module.exports = RedisCommands;
