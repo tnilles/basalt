@@ -4,11 +4,12 @@
 	"eqeqeq": true,
 	"indent": 4,
 	"latedef": true,
-	"newcap": true,
+	"newcap": false,
 	"quotmark": "single",
 	"mocha": true,
 	"browser": true,
 	"predef": [
-		"Polymer"
+		"Polymer",
+		"console"
 	]
 }

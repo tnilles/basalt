@@ -1,7 +1,8 @@
 'use strict';
 
-var RedisConnector = require('./js/service/redis-connector'),
-    RedisCommands = require('./js/service/redis-commands');
+var RedisConnector  = require('./js/service/redis-connector'),
+    RedisCommands   = require('./js/service/redis-commands'),
+    _               = require('lodash');
 
 Polymer({
     server: {},
