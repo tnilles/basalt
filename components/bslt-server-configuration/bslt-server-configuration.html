@@ -2,6 +2,8 @@
 <link rel="import" href="../../js/lib/paper-input/paper-input.html">
 <link rel="import" href="../../js/lib/paper-button/paper-button.html">
 <link rel="import" href="../../js/lib/core-a11y-keys/core-a11y-keys.html">
+<link rel="import" href="../../js/lib/core-collapse/core-collapse.html">
+<link rel="import" href="../../js/lib/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../bslt-server-service/bslt-server-service.html">
 
 <polymer-element name="bslt-server-configuration">
@@ -24,6 +26,38 @@
             <div>
                 <paper-input label="Port" value="{{port}}" floatingLabel></paper-input>
             </div>
+
+            <!-- Advanced options -->
+
+            <div>
+                <paper-button on-click="{{toggle}}" raised>Advanced options</paper-button>
+                <core-collapse id="advanced-options">
+                    <div vertical layout>
+                        <div>
+                            <paper-checkbox checked="{{useTunnel}}" label="Use SSH Tunnel"></paper-checkbox>
+                        </div>
+                        <div>
+                            <paper-input label="Remote host" value="{{remoteHost}}" floatingLabel></paper-input>
+                        </div>
+                        <div>
+                            <paper-input label="User name" value="{{username}}" floatingLabel></paper-input>
+                        </div>
+                        <div>
+                            <paper-checkbox checked="{{hasPassword}}"></paper-checkbox>
+                            <paper-input label="Password" value="{{password}}" disabled="{{!hasPassword}}" floatingLabel></paper-input>
+                        </div>
+                        <div>
+                            <paper-checkbox checked="{{hasSSHKey}}"></paper-checkbox>
+                            <!--<paper-input label="SSH key" value="{{sshkey}}" disabled="{{!hasSSHKey}}" floatingLabel></paper-input>-->
+                            <label>
+                                <span>SSH Key</span>
+                                <input type="file" id="sshkeyFile" on-change="{{setFile}}" />
+                            </label>
+                        </div>
+                    </div>
+                </core-collapse>
+            </div>
+
             <div>
                 <paper-button id="addServer" on-click="{{createServer}}" class="colored" raised>Add this server</paper-button>
             </div>

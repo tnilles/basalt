@@ -21,6 +21,8 @@
     "paper-button": "Polymer/paper-button#~0.5.5",
     "core-pages": "Polymer/core-pages#~0.5.5",
     "machina": "~1.0.0",
-    "core-signals": "Polymer/core-signals#^0.5"
+    "core-signals": "Polymer/core-signals#^0.5",
+    "core-collapse": "Polymer/core-collapse#^0.5",
+    "paper-checkbox": "Polymer/paper-checkbox#^0.5"
   }
 }

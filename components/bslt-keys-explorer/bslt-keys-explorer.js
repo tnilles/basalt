@@ -14,13 +14,21 @@ Polymer({
     redisConnector: {},
     error: '',
     serverChanged: function () {
-        var self = this;
+        var self    = this,
+            server  = {};
 
         if (self.server && Object.keys(self.server).length) {
-            self.redisConnector = new RedisConnector({
+            server = {
                 host: self.server.host,
                 port: self.server.port
-            });
+            };
+
+            if (self.server.useTunnel) {
+                server.dstHost = self.server.host;
+                server.tunnelOptions = self.server.tunnelOptions;
+            }
+
+            self.redisConnector = new RedisConnector(server);
 
             self.redisConnector.on('error', function (error) {
                 self.error = 'Could not connect to this server. Please check your configuration and try again.';

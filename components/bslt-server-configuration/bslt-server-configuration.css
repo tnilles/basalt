@@ -7,6 +7,10 @@ paper-button[raised].colored {
   color: #fff;
 }
 
+paper-checkbox {
+    vertical-align: -2em;
+}
+
 a#back {
     position: absolute;
     left: 20px;
