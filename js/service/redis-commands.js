@@ -21,7 +21,8 @@ RedisCommands.prototype.fetchKeys = function (fn) {
         keys = [];
 
     var scan = function(index) {
-        self._client.scan(index, function(error, result) {
+        self._client.scan(index, 'COUNT', 1000, function(error, result) {
+            console.log(result[0], result[1]);
             keys = keys.concat(result[1]);
 
             var nextIndex = parseInt(result[0], 10);
