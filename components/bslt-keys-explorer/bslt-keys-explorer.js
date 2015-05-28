@@ -35,6 +35,10 @@ Polymer({
                 self.redisConnector.end();
             });
 
+            self.redisConnector.on('ready', function () {
+                console.log('Connection ready!');
+            });
+
             self.initKeys();
         }
     },
@@ -45,11 +49,12 @@ Polymer({
             self.redisCommands = new RedisCommands(client);
 
             self.redisCommands.fetchKeys(function (err, replies) {
+                console.log('Keys fetched!');
                 self.setKeys(replies);
             });
 
             client.on('error', function (err) {
-                console.log('Error ' + err);
+                console.log('Error ', err);
             });
         });
     },
@@ -61,7 +66,9 @@ Polymer({
         this.keyType = '';
 
         client.select(event.detail, function () {
+            console.log('DB selected');
             self.redisCommands.fetchKeys(function (err, replies) {
+                console.log('Keys fetched');
                 self.setKeys(replies);
             });
         });
