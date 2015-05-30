@@ -56,3 +56,13 @@
     padding: 20px;
     box-shadow: 0px 0px 1px rgb(161, 161, 161);
 }
+
+.loader {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    margin-top: -50px;
+    left: 50%;
+    margin-left: -50px;
+}

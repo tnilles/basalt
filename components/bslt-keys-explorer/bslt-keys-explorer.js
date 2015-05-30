@@ -13,11 +13,14 @@ Polymer({
     redisCommands: {},
     redisConnector: {},
     error: '',
+    loading: false,
     serverChanged: function () {
         var self    = this,
             server  = {};
 
         if (self.server && Object.keys(self.server).length) {
+            self.loading = true;
+
             server = {
                 host: self.server.host,
                 port: self.server.port
@@ -31,11 +34,13 @@ Polymer({
             self.redisConnector = new RedisConnector(server);
 
             self.redisConnector.on('error', function (error) {
+                self.loading = false;
                 self.error = 'Could not connect to this server. Please check your configuration and try again.';
                 self.redisConnector.end();
             });
 
             self.redisConnector.on('ready', function () {
+                self.loading = false;
                 console.log('Connection ready!');
             });
 
@@ -46,14 +51,18 @@ Polymer({
         var self = this;
 
         self.redisConnector.on('ready', function (client) {
+            self.loading = true;
+
             self.redisCommands = new RedisCommands(client);
 
             self.redisCommands.fetchKeys(function (err, replies) {
+                self.loading = false;
                 console.log('Keys fetched!');
                 self.setKeys(replies);
             });
 
             client.on('error', function (err) {
+                self.loading = false;
                 console.log('Error ', err);
             });
         });
@@ -67,8 +76,10 @@ Polymer({
 
         client.select(event.detail, function () {
             console.log('DB selected');
+            self.loading = true;
             self.redisCommands.fetchKeys(function (err, replies) {
                 console.log('Keys fetched');
+                self.loading = false;
                 self.setKeys(replies);
             });
         });
